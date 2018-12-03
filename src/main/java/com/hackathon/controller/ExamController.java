@@ -1,3 +1,9 @@
+/*
+ * @author Dhruv Bindoria
+ * @author Priyanka Wadekar
+ * @author Aditya Ladhe
+ */
+
 package com.hackathon.controller;
 
 import java.util.List;
@@ -25,6 +31,10 @@ public class ExamController {
 	@Autowired
 	ExamDAO edao;
 
+	/*
+	 * userSession has currently logged in user's complete data
+	 * use is carefully!
+	 */
 	@RequestMapping("/ExamInstructions")
 	public ModelAndView redirectToInstructionPage(HttpServletRequest req, HttpServletResponse res) {
 		
@@ -38,10 +48,12 @@ public class ExamController {
 
 	}
 
+	/*
+	 * The listcount variable gives a count of currently fetched row from the list of questions
+	 * The count variable is used to point out the index of the list 
+	 */
 	@RequestMapping("/startExam")
 	public ModelAndView startExam(HttpServletRequest req, HttpServletResponse res, ModelAndView model) {
-
-
 
 		List<Questions> qnlist = qdao.getAllQuestions();
 
@@ -49,6 +61,7 @@ public class ExamController {
 		int count = 0;
 		int scoreCounter = 0;
 
+		
 		HttpSession ses = req.getSession(true);
 		ses.setAttribute("counter", count);
 		ses.setAttribute("listcount", listcount);
@@ -113,8 +126,9 @@ public class ExamController {
 			int i = edao.setScore(u, scoreCounter, passOrFail);
 			
 			//Code for sending score to the result page
-			//ses.setAttribute("scoreCounter", scoreCounter);
-			model.addObject(scoreCounter);
+			model.addObject(scoreCounter);  //I think autoboxing of int to Integer is happening over here because.. addObject() takes in only Object as its parameter
+			model.addObject("remark", passOrFail);
+			model.addObject("user",u);
 			model.setViewName("ScorePage");
 			return model;
 			

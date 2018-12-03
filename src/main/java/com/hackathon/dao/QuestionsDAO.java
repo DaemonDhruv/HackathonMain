@@ -1,3 +1,10 @@
+/*
+ * @author Dhruv Bindoria
+ * @author Priyanka Wadekar
+ * @author Aditya Ladhe
+ */
+
+
 package com.hackathon.dao;
 
 import java.util.List;
@@ -48,7 +55,7 @@ public class QuestionsDAO implements QuestionsDAOInterface {
 	//Returns List of objects. These objects are of class Questions and each object represents a row
 	public List<Questions> getAllQuestions() {
 		
-	
+		
 		String sql = "SELECT * FROM gr7_Questions";
 			
 		List<Questions> Questions  = getJdbcTemplate().query(sql, new BeanPropertyRowMapper(Questions.class));

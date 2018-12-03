@@ -25,6 +25,10 @@ public class UserController {
 	@Autowired
 	Login login;
 	
+	@RequestMapping("/index")
+	public ModelAndView redirectToHome() {
+		return new ModelAndView("index");
+	}
 	
 	@RequestMapping("/Registration")
 	public ModelAndView redirectToRegisterPage() {

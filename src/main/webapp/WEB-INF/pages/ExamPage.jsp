@@ -10,34 +10,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<script src="resources/js/jquery-1.11.0.min.js"></script>
-<link href="resources/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="resources/css/style.css" rel='stylesheet' type='text/css' />
-<link href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="resources/js/modernizr.custom.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Flamenco" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Level 1 Exam</h1>
-
-	Question: ${questionData. getGq_question()} 
 	
-	<div>
+	<header>
+	
+	<nav>
+		<div class="row clearfix">
+			<img src="resources/images/logo.png" class ="logo">
+			<ul class="main-nav animated slideInDown">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="index.html">Logout</a></li>
+			    <!-- <li><a href="Registration.html">Register</a></li> -->
+			</ul>
+			
+		</div>
 
-		<form action="nextQn.html" method="post">
-
-
-			<input type="radio" name="op" value="${questionData.getGq_op1_Ans()}">${questionData.getGq_op1()}<br>
-			<input type="radio" name="op" value="${questionData.getGq_op2_Ans()}">${questionData.getGq_op2()}<br>
-			<input type="radio" name="op" value="${questionData.getGq_op3_Ans()}">${questionData.getGq_op3()}<br>
-			<input type="radio" name="op" value="${questionData.getGq_op4_Ans()}">${questionData.getGq_op4()}<br>
-
-			<input type="submit" value="Next Question">
-
-
-		</form>
-	</div>
+		</nav>
+		<div class="main-content-header">
+			<div class="questionPanel">
+				<h1>Question: ${questionData. getGq_question()}</h1>
+				<form action="nextQn.html" method="post">
+					<input type="radio" name="op" value="${questionData.getGq_op1_Ans()}">${questionData.getGq_op1()}<br>
+					<input type="radio" name="op" value="${questionData.getGq_op2_Ans()}">${questionData.getGq_op2()}<br>
+					<input type="radio" name="op" value="${questionData.getGq_op3_Ans()}">${questionData.getGq_op3()}<br>
+					<input type="radio" name="op" value="${questionData.getGq_op4_Ans()}">${questionData.getGq_op4()}<br>
+		
+					<input class="btn btn-2" type="submit" value="Next Question">
+				</form>
+			</div>
+	    </div>
+</header>
 	
 </body>
 </html>

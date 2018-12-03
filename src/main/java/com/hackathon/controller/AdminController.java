@@ -39,6 +39,10 @@ public class AdminController {
 	@Autowired
 	QuestionsDAO qdao;
 
+	
+	/*
+	 * This method is responsible for reading excel file and import it to the database schema 
+	 */
 	//Excel import ...
 		@RequestMapping("/upload")
 		public ModelAndView uploadExcel(HttpServletRequest req, HttpServletResponse res, ModelAndView model) throws IOException {
