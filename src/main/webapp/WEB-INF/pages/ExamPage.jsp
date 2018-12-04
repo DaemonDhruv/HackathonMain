@@ -42,20 +42,24 @@ if(session.getAttribute("username")==null)
         </div>
       </nav>
     </header>
-		<div class="main-content-header">
-			<div class="questionPanel">
-				<h1>Question: ${questionData. getGq_question()}</h1>
-				<form action="nextQn.html" method="post">
-					<input type="radio" name="op" value="${questionData.getGq_op1_Ans()}">${questionData.getGq_op1()}<br>
-					<input type="radio" name="op" value="${questionData.getGq_op2_Ans()}">${questionData.getGq_op2()}<br>
-					<input type="radio" name="op" value="${questionData.getGq_op3_Ans()}">${questionData.getGq_op3()}<br>
-					<input type="radio" name="op" value="${questionData.getGq_op4_Ans()}">${questionData.getGq_op4()}<br>
-		
-					<input class="btn btn-2" type="submit" value="Next Question">
-				</form>
-			</div>
-	    </div>
-
-	
+    
+    <div class="card">
+      <form action="nextQn.html" method="post">
+      	<div class="card-header">
+      	  <h3>Question: ${questionData. getGq_question()}</h3>
+      	</div>
+      	<div class="card-body">
+      	  <ul style="list-style-type: disc">
+      	    <li class="list-group-item"><input type="radio" name="op" value="${questionData.getGq_op1_Ans()}"> ${questionData.getGq_op1()}</li>
+      	    <li class="list-group-item"><input type="radio" name="op" value="${questionData.getGq_op2_Ans()}"> ${questionData.getGq_op2()}</li>
+      	    <li class="list-group-item"><input type="radio" name="op" value="${questionData.getGq_op3_Ans()}"> ${questionData.getGq_op3()}</li>
+      	    <li class="list-group-item"><input type="radio" name="op" value="${questionData.getGq_op4_Ans()}"> ${questionData.getGq_op4()}</li>
+      	  </ul>
+      	  <input class="btn btn-primary" type="submit" value="Next Question">
+      	</div>
+ 
+      </form>
+    </div>
+    
 </body>
 </html>
