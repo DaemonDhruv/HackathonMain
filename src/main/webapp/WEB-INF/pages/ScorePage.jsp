@@ -26,7 +26,7 @@
 		<div class="row clearfix">
 			<img src="resources/images/logo.png" class ="logo">
 			<ul class="main-nav animated slideInDown">
-				<li><a href="#">Home</a></li>
+				<li><a href="index.html">Home</a></li>
 				<li><a href="#">About us</a></li>
 				<li><a href="index.html">Logout</a></li>
 			    <!-- <li><a href="Registration.html">Register</a></li> -->
