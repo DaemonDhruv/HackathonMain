@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
  <link rel="stylesheet" href="resources/css/bootstrap.css">
+ <link rel="stylesheet" href="resources/css/common.css">
  <link rel="stylesheet" href="resources/css/exam.css">
  <link href="https://fonts.googleapis.com/css?family=Flamenco" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" rel="stylesheet">

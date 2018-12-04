@@ -7,13 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="resources/js/jquery-1.11.0.min.js"></script>
-<link href="resources/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="resources/css/style1.css" rel='stylesheet' type='text/css' />
-<link href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="resources/js/modernizr.custom.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/style1.css">
-<title>Iogin</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css"/>
+<!-- Common css -->
+<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+<!-- Main css -->
+<link rel="stylesheet" type="text/css" href="resources/css/loginregister.css">
+<!-- Font Icon -->
+<link rel="stylesheet" href="resources/fonts/material-icon/css/material-design-iconic-font.min.css">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Flamenco" rel="stylesheet">
+
+<title>Login</title>
 </head>
 <body>
 <%
@@ -28,13 +34,52 @@ if(session.getAttribute("username")==null)
 %>
  <%=session.getAttribute("username") %>
  
-	<form class="login" action="userLogin" method="POST">
-    <h1 class="login-title">Login Page</h1>
-    <input type="text" name="gu_email" class="login-input" required="required" placeholder=" Enter valid Email Address" autofocus> <!-- -->
-    <input type="password" name="gu_password" class="login-input" required="required" placeholder=" Enter Password">
-    <input type="submit" value="LogIn" class="login-button">
-  <p class="login-lost"><a href="">Forgot Password?</a></p>
-  <p class="login-lost"><a href="Registration.html">New User? Register Now</a></p>
-  </form>
+	<header>
+      <nav>
+        <div class="row1">
+          <img src="resources/images/logo.png" class ="logo1">
+          <ul class="main-nav1 animated slideInDown">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    
+    
+    
+    <div class="main">
+    
+    
+     <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="resources/images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="Registration.html" class="signup-image-link">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign in</h2>
+                        <form action="userLogin" method="POST" class="register-form" id="login-form">
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="email" name="gu_email" id="your_name" placeholder="Your email"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="gu_password" id="your_pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
 </body>
 </html>

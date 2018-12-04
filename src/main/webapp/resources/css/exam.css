@@ -1,17 +1,3 @@
-*{
-	margin: 0px;
-	padding: 0px;
-    box-sizing: border-box;
-}
-
-body {
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../images/header.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-}
-
 .card {
   width: 40%;
   border-radius: 20px;
@@ -20,43 +6,4 @@ body {
   margin-left: auto;
   opacity: 0.8;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-}
-
-header {
-    font-size: 20px;
-	overflow-x: hidden;
-	color: #fff;
-	font-family: 'Flamenco', cursive;
-}
-
-.row1{
-	max-width: 1180px;
-	margin: 0 auto;
-}
-
-.logo1 {
-	height: 120px;
-	width: auto;
-	float: left;
-	margin: 20px;
-}
-.main-nav1{
-	float: right;
-	margin-top: 60px;
-}
-.main-nav1 li{
-	display: inline-block;
-	list-style: none;
-	margin-left: 40px;
-}
-.main-nav1 li a{
-	padding: 5px 0;
-	color: #fff;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-size: 90%;
-	font-weight: 100px;
-}
-.main-nav1 li a:hover{
-	border-bottom: 2px solid #bf55ec;
 }

@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
+<link rel="stylesheet" href="resources/css/common.css">
 <link href="resources/css/style3.css" rel='stylesheet' type='text/css' />
 
 
