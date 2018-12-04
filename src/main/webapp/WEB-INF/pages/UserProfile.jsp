@@ -16,6 +16,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<%
+response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+response.setHeader("Pragma", "no-cache");
+
+response.setHeader("Expires", "0");
+%>
+
+<div><a href="logout.html">Logout</a></div>
   <a href="Report.html">View your Report</a>
   <a href="ExamInstructions.html">Give Exam</a>
 </body>

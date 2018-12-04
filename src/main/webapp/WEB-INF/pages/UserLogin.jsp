@@ -16,13 +16,25 @@
 <title>Iogin</title>
 </head>
 <body>
+<%
+response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+response.setHeader("Pragma", "no-cache");
+
+response.setHeader("Expires", "0");
+
+if(session.getAttribute("username")==null)
+	response.sendRedirect("UserLogin.jsp");
+
+%>
+ <%=session.getAttribute("username") %>
+ 
 	<form class="login" action="userLogin" method="POST">
     <h1 class="login-title">Login Page</h1>
     <input type="text" name="gu_email" class="login-input" required="required" placeholder=" Enter valid Email Address" autofocus> <!-- -->
     <input type="password" name="gu_password" class="login-input" required="required" placeholder=" Enter Password">
     <input type="submit" value="LogIn" class="login-button">
   <p class="login-lost"><a href="">Forgot Password?</a></p>
-  <p class="login-lost"><a href="Registration.jsp">New User? Register Now</a></p>
+  <p class="login-lost"><a href="Registration.html">New User? Register Now</a></p>
   </form>
 </body>
 </html>

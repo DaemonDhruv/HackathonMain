@@ -35,19 +35,33 @@ public class UserController {
 		return new ModelAndView("Registration");
 	}
 	
+	@RequestMapping("/logout")
+	public ModelAndView redirectToHomePage() {
+		return new ModelAndView("index");
+	}
+	
+	
 	@RequestMapping("/UserLogin")
-	public ModelAndView redirectToLoginPage() {
-		return new ModelAndView("UserLogin");
+	public ModelAndView redirectToLoginPage(HttpServletRequest req) {
+		HttpSession session=req.getSession();
+		if(session.getAttribute("username")==null) {
+			session.setAttribute("username", " ");
+		}
+     
+     return new ModelAndView("UserLogin");
+		
 	}
 	
 	@RequestMapping("/save")
-	public ModelAndView userRegister(ModelAndView model, @ModelAttribute User user, Address addr)
+	public ModelAndView userRegister(HttpServletRequest req, ModelAndView model, @ModelAttribute User user, Address addr)
 	{
 
 		System.out.println(user);
+		HttpSession session=req.getSession();
+		
 		
 		int i = rdao.saveRegistrationData(user, addr);
-
+		session.setAttribute("username", user.getGu_name());
 		model.setViewName("UserLogin");
 
 		return model;
@@ -59,7 +73,7 @@ public class UserController {
 	@RequestMapping("/userLogin")
 	public ModelAndView userLogin(HttpServletRequest req, HttpServletResponse res, ModelAndView model, @ModelAttribute Login login) {
 		
-
+         
 		boolean valid = rdao.validateUser(login);
 	
 		if(valid) {
@@ -77,6 +91,7 @@ public class UserController {
 			
 			}
 			else {
+				
 			
 				model.setViewName("UserProfile");
 				return model;

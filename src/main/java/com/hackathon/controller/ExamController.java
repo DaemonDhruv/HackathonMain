@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,7 +37,7 @@ public class ExamController {
 	 * use is carefully!
 	 */
 	@RequestMapping("/ExamInstructions")
-	public ModelAndView redirectToInstructionPage(HttpServletRequest req, HttpServletResponse res) {
+	public ModelAndView redirectToInstructionPage(HttpServletRequest req, HttpServletResponse res,@ModelAttribute User user) {
 		
 		HttpSession userSession = req.getSession(false);
 		if(null != userSession) {
@@ -53,7 +54,7 @@ public class ExamController {
 	 * The count variable is used to point out the index of the list 
 	 */
 	@RequestMapping("/startExam")
-	public ModelAndView startExam(HttpServletRequest req, HttpServletResponse res, ModelAndView model) {
+	public ModelAndView startExam(HttpServletRequest req, HttpServletResponse res,ModelAndView model, @ModelAttribute User user) {
 
 		List<Questions> qnlist = qdao.getAllQuestions();
 
@@ -63,6 +64,8 @@ public class ExamController {
 
 		
 		HttpSession ses = req.getSession(true);
+		//ses.setAttribute("username", user.getGu_name());
+		//ses.setMaxInactiveInterval(30);
 		ses.setAttribute("counter", count);
 		ses.setAttribute("listcount", listcount);
 		ses.setAttribute("scoreCounter", scoreCounter);
