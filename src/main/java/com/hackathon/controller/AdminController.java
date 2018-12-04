@@ -54,7 +54,7 @@ public class AdminController {
 			} 
 			Connection conn = null;
 			try {
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.100.198:1521/xe", "system", "Newuser123");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "db", "Newuser123");
 			} catch (SQLException e3) {
 
 				e3.printStackTrace();
