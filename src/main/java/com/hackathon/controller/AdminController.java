@@ -11,20 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Iterator;
 
-
-
 //Servlet Related
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-//For importing excel file to database 
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+//For importing excel file to database 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 //Spring related
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hackathon.dao.QuestionsDAO;
+import com.hackathon.dao.RemoveExcelDAO;
 
 
 @Controller
@@ -39,13 +35,14 @@ public class AdminController {
 	@Autowired
 	QuestionsDAO qdao;
 
-	
+	@Autowired
+	RemoveExcelDAO rex;
 	/*
 	 * This method is responsible for reading excel file and import it to the database schema 
 	 */
 	//Excel import ...
 		@RequestMapping("/upload")
-		public ModelAndView uploadExcel(HttpServletRequest req, HttpServletResponse res, ModelAndView model) throws IOException {
+		public ModelAndView uploadExcel(HttpServletRequest req, HttpServletResponse res, ModelAndView model) {
 			try {
 				Class.forName ("oracle.jdbc.OracleDriver");
 			} catch (ClassNotFoundException e4) {
@@ -70,9 +67,22 @@ public class AdminController {
 
 
 			// We should now load excel objects and loop through the worksheet data 
-			FileInputStream 	input_document = new FileInputStream(new File("C:\\Users\\AE103_PC19\\Desktop\\demo.xlsx"));
+			FileInputStream input_document = null;
+			XSSFWorkbook my_xls_workbook = null;
+			try {
+				input_document = new FileInputStream(new File("C:\\Users\\AE103_PC19\\Desktop\\demo.xlsx"));
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			// Load workbook 
-			XSSFWorkbook my_xls_workbook = new XSSFWorkbook(input_document);
+		
+			try {
+				my_xls_workbook = new XSSFWorkbook(input_document);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			/* Load worksheet */
 			XSSFSheet my_worksheet = my_xls_workbook.getSheetAt(0);
 			// we loop through and insert data
@@ -203,7 +213,12 @@ public class AdminController {
 				}
 			}
 			/* Close input stream */
-			input_document.close();
+			try {
+				input_document.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 			try {
 				/* Close prepared statement */
@@ -219,6 +234,20 @@ public class AdminController {
 			model.setViewName("AdminHome");
 			return model;
 
+		}
+		/*
+		 This code is for removing excel file from database
+		 */
+		@RequestMapping("/remove")
+		public ModelAndView removeExcel(ModelAndView model) {
+			
+			int i=rex.removeExcel();
+			if(i>0) {
+				System.out.println("file removed");
+			}
+			
+			return model;
+			
 		}
 
 

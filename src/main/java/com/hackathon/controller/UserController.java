@@ -18,6 +18,9 @@ import com.hackathon.model.User;
 
 @Controller
 public class UserController {
+
+
+	
 	
 	@Autowired
 	RegistrationDAO rdao;
@@ -55,11 +58,8 @@ public class UserController {
 	@RequestMapping("/save")
 	public ModelAndView userRegister(HttpServletRequest req, ModelAndView model, @ModelAttribute User user, Address addr)
 	{
-
-		System.out.println(user);
 		HttpSession session=req.getSession();
-		
-		
+		System.out.println(user);
 		int i = rdao.saveRegistrationData(user, addr);
 		session.setAttribute("username", user.getGu_name());
 		model.setViewName("UserLogin");
@@ -73,26 +73,29 @@ public class UserController {
 	@RequestMapping("/userLogin")
 	public ModelAndView userLogin(HttpServletRequest req, HttpServletResponse res, ModelAndView model, @ModelAttribute Login login) {
 		
-         
+        String username=req.getParameter("username");
 		boolean valid = rdao.validateUser(login);
 	
 		if(valid) {
-		
+			
+			 
+		    
 			User u = rdao.getUser(login.getGu_email());
 			
-			HttpSession userSession = req.getSession(true);
-			userSession.setAttribute("user", u);
+			//HttpSession userSession = req.getSession(true);
+			 
 			
 			//This part is only for redirection 
 			if(login.getGu_email().equals("admin123@gmail.com")) {
-			
+				HttpSession session=req.getSession();
+				session.setAttribute("username",username);
 				model.setViewName("AdminHome");
 				return model;
 			
 			}
 			else {
-				
-			
+				HttpSession session=req.getSession();
+				session.setAttribute("username",username);
 				model.setViewName("UserProfile");
 				return model;
 			
@@ -101,7 +104,8 @@ public class UserController {
 
 		}
 		else {
-
+			HttpSession session=req.getSession();
+			session.setAttribute("msg","Invalid Username and password");
 			model.setViewName("UserLogin");
 			return model;
 		

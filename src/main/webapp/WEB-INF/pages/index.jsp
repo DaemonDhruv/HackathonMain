@@ -45,7 +45,7 @@ response.setHeader("Expires", "0");
 		<div class="main-content-header">
 		<h1>Welcome to <span class="colorchange">HACKATHON</span>.<br>Online Exam System</h1>
 		<a href="#" class="btn btn-1">View Report</a>
-		<a href="#" class="btn btn-2">Start Exam</a>
+		<a href="startExam1.html" class="btn btn-2">Start Exam</a>
 	    </div>
 </header>
 

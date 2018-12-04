@@ -25,6 +25,8 @@ import com.hackathon.model.User;
 
 @Controller
 public class ExamController {
+	
+
 
 	@Autowired
 	QuestionsDAO qdao;
@@ -38,16 +40,40 @@ public class ExamController {
 	 */
 	@RequestMapping("/ExamInstructions")
 	public ModelAndView redirectToInstructionPage(HttpServletRequest req, HttpServletResponse res,@ModelAttribute User user) {
+		HttpSession Session=req.getSession();
 		
-		HttpSession userSession = req.getSession(false);
-		if(null != userSession) {
-			return new ModelAndView("ExamInstructions");
+		if(Session.getAttribute("username")==null) {
+		
+			return new ModelAndView("UserLogin");
+			
 		}
 		else {
-			return new ModelAndView("UserLogin");
+			
+			return new ModelAndView("ExamInstructions");
 		}
 
 	}
+	
+	@RequestMapping("/startExam1")
+	public ModelAndView redirectToInstructionPage1(HttpServletRequest req, HttpServletResponse res) {
+		
+		HttpSession Session = req.getSession();
+		
+		if(Session.getAttribute("username")==null) {
+			
+			
+			return new ModelAndView("Registration");
+			
+		}
+		else {
+			
+			return new ModelAndView("ExamInstructions");
+			
+			
+		}
+
+	}
+
 
 	/*
 	 * The listcount variable gives a count of currently fetched row from the list of questions
@@ -55,6 +81,8 @@ public class ExamController {
 	 */
 	@RequestMapping("/startExam")
 	public ModelAndView startExam(HttpServletRequest req, HttpServletResponse res,ModelAndView model, @ModelAttribute User user) {
+		HttpSession ses = req.getSession(true);
+	
 
 		List<Questions> qnlist = qdao.getAllQuestions();
 
@@ -63,8 +91,7 @@ public class ExamController {
 		int scoreCounter = 0;
 
 		
-		HttpSession ses = req.getSession(true);
-		//ses.setAttribute("username", user.getGu_name());
+		ses.setAttribute("username", user.getGu_name());
 		//ses.setMaxInactiveInterval(30);
 		ses.setAttribute("counter", count);
 		ses.setAttribute("listcount", listcount);
@@ -77,6 +104,7 @@ public class ExamController {
 		model.setViewName("ExamPage");
 		return model;
 	}
+	
 
 	@RequestMapping("/nextQn")
 	public ModelAndView nextQn(HttpServletRequest req, HttpServletResponse res, ModelAndView model) {

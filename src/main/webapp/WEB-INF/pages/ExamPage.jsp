@@ -18,7 +18,37 @@
 
 <title>Insert title here</title>
 </head>
-<body>
+
+<script type="text/javascript"
+	src="resources/js/modernizr.custom.min.js"></script>
+
+<!--Timer's Logic here --> 
+
+
+<script type="text/javascript">
+	function timeout() {
+		var minute = Math.floor(timeLeft / 60);
+		var second = timeLeft % 60;
+		
+		var sec=checktime(second);
+		if (timeLeft <= 0) {
+			//$("#form1").submit(); ------> jQuery 
+			clearTimeout(tm);
+			document.getElementById("form1").submit(); //---->>>>> Using Java Script
+		} else {
+			document.getElementById("time").innerHTML = minute + ":" + sec;
+		}
+		timeLeft--;
+		var tm = setTimeout(function() {timeout()}, 1000);
+	}
+	function checktime(msg){
+		if(msg<10){
+			msg="0"+msg;
+		}
+		return msg;
+	}
+</script>
+<body onload="timeout()">
 <%
 response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
 response.setHeader("Pragma", "no-cache");
@@ -28,6 +58,14 @@ if(session.getAttribute("username")==null)
 
 
 %>
+	<script type="text/javascript">
+		var timeLeft = 2 * 60;
+	</script>
+	<center><h1>Level 1 Exam</h1></center>
+	<h2>
+		<div id="time" style="float: right"></div>
+	</h2>
+
 	
 	<header>
 	

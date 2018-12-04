@@ -51,6 +51,11 @@
 
 		<bean id="login" class="com.hackathon.model.Login"
 				autowire="byType"></bean>
+				
+				
+				
+				<bean id="rex" class="com.hackathon.dao.RemoveExcelDAO"
+				autowire="byType"></bean>
 
 			
 			
