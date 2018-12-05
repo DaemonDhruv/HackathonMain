@@ -40,7 +40,7 @@
 		<h1>Welcome to <span class="colorchange">HACKATHON</span>.<br>Online Exam System</h1>
 		<a href="#" class="btn btn-1">View Report</a><br><br>
 		<a href="${pageContext.request.contextPath}/upload" class="btn btn-2">Add Files</a><br><br>
-		<a href="#" class="btn btn-3">Remove Files</a>
+		<a href="#" class="btn btn-1">Remove Files</a>
 	    </div>
 </header>
 

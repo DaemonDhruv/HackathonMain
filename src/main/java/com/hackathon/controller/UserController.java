@@ -92,7 +92,7 @@ public class UserController {
 			}
 			else {
 				
-			
+				model.addObject("user", u);
 				model.setViewName("UserProfile");
 				return model;
 			

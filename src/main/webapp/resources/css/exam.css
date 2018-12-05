@@ -1,0 +1,9 @@
+.card {
+  width: 40%;
+  border-radius: 20px;
+  margin-top: 1vh;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0.8;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
