@@ -84,7 +84,7 @@ public class ExamController {
 		
 		
 		HttpSession ses = req.getSession(false);
-		System.out.println("examSes" + ses);
+
 		int count = (Integer)ses.getAttribute("counter");
 		int listcount = (Integer)ses.getAttribute("listcount");
 		int scoreCounter = (Integer)ses.getAttribute("scoreCounter");
@@ -95,9 +95,6 @@ public class ExamController {
 			scoreCounter++;
 		}
 		
-		System.out.println("list count: " + listcount);
-		System.out.println("qn list size: " + qnlistSize);
-		System.out.println("score " + scoreCounter);
 		
 		if(listcount<=qnlistSize) {
 
@@ -105,7 +102,7 @@ public class ExamController {
 			count++;
 			Questions q = qnlist.get(count);
 			
-			System.out.println(q);
+
 			ses.setAttribute("scoreCounter", scoreCounter);
 			ses.setAttribute("counter", count);
 			ses.setAttribute("listcount", listcount);
@@ -118,7 +115,7 @@ public class ExamController {
 			
 			//Code for putting score in database for the current logged in user..
 			HttpSession userSession = req.getSession(false);
-			System.out.println("userSession" + userSession);
+
 			User u = (User)userSession.getAttribute("user");
 			
 			String passOrFail = "Fail";

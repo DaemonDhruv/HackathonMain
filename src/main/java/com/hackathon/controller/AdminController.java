@@ -54,7 +54,7 @@ public class AdminController {
 			} 
 			Connection conn = null;
 			try {
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "db", "Newuser123");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.100.198:1521:xe", "system", "Newuser123");
 			} catch (SQLException e3) {
 
 				e3.printStackTrace();
@@ -87,7 +87,7 @@ public class AdminController {
 					Cell cell = cellIterator.next();
 					String s=String.valueOf(cell.getCellType());
 					if(s.equals("NUMERIC") && (cell.getColumnIndex()==0)) { 
-						//System.out.println("lol");
+
 						try {
 							sql_statement.setDouble(1, cell.getNumericCellValue());
 
@@ -199,7 +199,9 @@ public class AdminController {
 					sql_statement.executeUpdate();
 				} catch (SQLException e) {
 
-					e.printStackTrace();
+//					model.addObject("exception", e);
+//					model.setViewName("errorPage");
+//					return model; 
 				}
 			}
 			/* Close input stream */
@@ -213,10 +215,11 @@ public class AdminController {
 				/* Close connection */
 				conn.close();
 			} catch (SQLException e) {
-		
-				e.printStackTrace();
+//				model.addObject("exception", e);
+//				model.setViewName("errorPage");
+//				return model; 
 			}
-			model.setViewName("AdminHome");
+			model.setViewName("Practice1");
 			return model;
 
 		}

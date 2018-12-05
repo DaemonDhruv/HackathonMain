@@ -56,7 +56,7 @@ public class UserController {
 	public ModelAndView userRegister(HttpServletRequest req, ModelAndView model, @ModelAttribute User user, Address addr)
 	{
 
-		System.out.println(user);
+
 		HttpSession session=req.getSession();
 		
 		
