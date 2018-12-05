@@ -193,7 +193,7 @@ h2 {
 
 body {
   font-size: 13px;
-  line-height: 1.8;
+  line-height: 0.8;
 
   font-weight: 400;
   font-family: Poppins; }
@@ -249,10 +249,10 @@ body {
   -ms-transform: translate(-50%, -50%); }
 
 .signup {
-  margin-bottom: 150px; }
+  margin-bottom: 20px; }
 
 .signup-content {
-  padding: 75px 0; }
+  padding: 25px 0; }
 
 .signup-form, .signup-image, .signin-form, .signin-image {
   width: 50%;
@@ -539,7 +539,7 @@ label.valid {
     margin-right: 0px;
     padding-left: 0px;
     /* box-sizing: border-box; */
-    padding: 0 30px; }
+    padding: 0 10px; }
 
   .signin-image {
     margin-left: 0px;
